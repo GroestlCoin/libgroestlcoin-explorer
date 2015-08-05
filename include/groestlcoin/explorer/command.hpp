@@ -68,7 +68,7 @@ namespace explorer {
 
 #define BX_CONFIG_VARIABLE "config"
 #define BX_HELP_VARIABLE "help"
-#define BX_PROGRAM_NAME "bx"
+#define BX_PROGRAM_NAME "gx"
 
 static boost::filesystem::path default_config_path()
 {

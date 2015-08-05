@@ -45,7 +45,7 @@
 /**
  * The name of this program.
  */
-#define BX_PROGRAM_NAME "bx"
+#define BX_PROGRAM_NAME "gx"
 
 /**
  * Delimiter for use in word splitting serialized input and output points.
