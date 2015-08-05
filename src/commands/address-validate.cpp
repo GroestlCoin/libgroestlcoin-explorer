@@ -1,9 +1,9 @@
 /**
- * Copyright (c) 2011-2015 libbitcoin developers (see AUTHORS)
+ * Copyright (c) 2011-2015 libgroestlcoin developers (see AUTHORS)
  *
- * This file is part of libbitcoin-explorer.
+ * This file is part of libgroestlcoin-explorer.
  *
- * libbitcoin-explorer is free software: you can redistribute it and/or
+ * libgroestlcoin-explorer is free software: you can redistribute it and/or
  * modify it under the terms of the GNU Affero General Public License with
  * additional permissions to the one published by the Free Software
  * Foundation, either version 3 of the License, or (at your option)
@@ -18,11 +18,11 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <bitcoin/explorer/commands/address-validate.hpp>
+#include <groestlcoin/explorer/commands/address-validate.hpp>
 
 #include <iostream>
-#include <bitcoin/explorer/define.hpp>
-#include <bitcoin/explorer/primitives/address.hpp>
+#include <groestlcoin/explorer/define.hpp>
+#include <groestlcoin/explorer/primitives/address.hpp>
 
 using namespace bc;
 using namespace bc::explorer;

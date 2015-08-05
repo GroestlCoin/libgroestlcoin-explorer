@@ -1,9 +1,9 @@
 /**
- * Copyright (c) 2011-2015 libbitcoin developers (see AUTHORS)
+ * Copyright (c) 2011-2015 libgroestlcoin developers (see AUTHORS)
  *
- * This file is part of libbitcoin-explorer.
+ * This file is part of libgroestlcoin-explorer.
  *
- * libbitcoin-explorer is free software: you can redistribute it and/or
+ * libgroestlcoin-explorer is free software: you can redistribute it and/or
  * modify it under the terms of the GNU Affero General Public License with
  * additional permissions to the one published by the Free Software
  * Foundation, either version 3 of the License, or (at your option)
@@ -18,21 +18,21 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <bitcoin/explorer/callback_state.hpp>
+#include <groestlcoin/explorer/callback_state.hpp>
 
 #include <iostream>
 #include <cstdint>
 #include <string>
 #include <boost/format.hpp>
 #include <boost/property_tree/ptree.hpp>
-#include <bitcoin/explorer/primitives/encoding.hpp>
-#include <bitcoin/explorer/define.hpp>
-#include <bitcoin/explorer/prop_tree.hpp>
-#include <bitcoin/explorer/utility.hpp>
+#include <groestlcoin/explorer/primitives/encoding.hpp>
+#include <groestlcoin/explorer/define.hpp>
+#include <groestlcoin/explorer/prop_tree.hpp>
+#include <groestlcoin/explorer/utility.hpp>
 
 using namespace pt;
 
-namespace libbitcoin {
+namespace libgroestlcoin {
 namespace explorer {
     
 callback_state::callback_state(std::ostream& error, std::ostream& output,
@@ -46,6 +46,20 @@ callback_state::callback_state(std::ostream& error, std::ostream& output,
 callback_state::callback_state(std::ostream& error, std::ostream& output)
     : callback_state(error, output, encoding_engine::info)
 {
+}
+
+bool callback_state::handle_error(const std::error_code& code, 
+    const std::string& format)
+{
+    if (code)
+    {
+        // May want to change the behavior to decrement vs. zeroizing refs.
+        error(boost::format(format) % code.message());
+        stop(console_result::failure);
+        return false;
+    }
+
+    return true;
 }
 
 // std::endl adds "/n" and flushes the stream.
@@ -105,20 +119,6 @@ bool& callback_state::stopped()
     return stopped_;
 }
 
-bool callback_state::succeeded(const std::error_code& code, 
-    const std::string& format)
-{
-    if (code)
-    {
-        // May want to change the behavior to decrement vs. zeroizing refs.
-        error(boost::format(format) % code.message());
-        stop(console_result::failure);
-        return false;
-    }
-
-    return true;
-}
-
 encoding_engine callback_state::get_engine()
 {
     return engine_;
@@ -168,4 +168,4 @@ callback_state& callback_state::operator--()
 }
 
 } // namespace explorer
-} // namespace libbitcoin
+} // namespace libgroestlcoin

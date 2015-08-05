@@ -1,9 +1,9 @@
 /**
- * Copyright (c) 2011-2015 libbitcoin developers (see AUTHORS)
+ * Copyright (c) 2011-2015 libgroestlcoin developers (see AUTHORS)
  *
- * This file is part of libbitcoin-explorer.
+ * This file is part of libgroestlcoin-explorer.
  *
- * libbitcoin-explorer is free software: you can redistribute it and/or
+ * libgroestlcoin-explorer is free software: you can redistribute it and/or
  * modify it under the terms of the GNU Affero General Public License with
  * additional permissions to the one published by the Free Software
  * Foundation, either version 3 of the License, or (at your option)
@@ -17,15 +17,13 @@
  * You should have received a copy of the GNU Affero General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-#include <bitcoin/explorer/utility.hpp>
+#include <groestlcoin/explorer/utility.hpp>
 
 #include <iomanip>
 #include <iostream>
 #include <random>
 #include <cstdint>
-#include <mutex>
 #include <string>
-#include <thread>
 #include <tuple>
 #include <vector>
 #include <boost/date_time.hpp>
@@ -39,34 +37,26 @@
 #include <boost/property_tree/info_parser.hpp>
 #include <boost/property_tree/json_parser.hpp>
 #include <boost/property_tree/xml_parser.hpp>
-#include <bitcoin/bitcoin.hpp>
-#include <bitcoin/explorer/command.hpp>
-#include <bitcoin/explorer/define.hpp>
+#include <groestlcoin/groestlcoin.hpp>
+#include <groestlcoin/explorer/command.hpp>
+#include <groestlcoin/explorer/define.hpp>
 
 using namespace boost::posix_time;
 using namespace bc::client;
 using boost::filesystem::path;
-using boost::format;
 
-namespace libbitcoin {
+namespace libgroestlcoin {
 namespace explorer {
-
-// Guard against concurrent file writes.
-static std::mutex logfile_mutex;
 
 static void output_to_file(std::ofstream& file, log_level level, 
     const std::string& domain, const std::string& body)
 {
-    static const auto form = "%1% %2% [%3%] %4%\n";
+    static const auto message = "%1% %2% [%3%]: %4%";
     if (!body.empty())
     {
         const auto log = level_repr(level);
         const auto time = microsec_clock::local_time().time_of_day();
-        const auto message = (format(form) % time % log % domain % body).str();
-
-        std::lock_guard<std::mutex> lock_logfile(logfile_mutex);
-        file << message;
-        file.flush();
+        file << format(message) % time % log % domain % body << std::endl;
     }
 }
 
@@ -114,22 +104,19 @@ bool is_testnet(const std::string& network)
 
 connection_type get_connection(const command& cmd)
 {
-    const auto connect_timeout_milliseconds = period_ms(
-        cmd.get_general_connect_timeout_seconds_setting() * 1000);
-
     if (is_testnet(cmd.get_general_network_setting()))
         return connection_type
         {
-            cmd.get_general_connect_retries_setting(),
-            connect_timeout_milliseconds,
+            cmd.get_general_retries_setting(),
+            period_ms(cmd.get_general_wait_setting()),
             cmd.get_testnet_cert_file_setting(),
             cmd.get_testnet_url_setting(),
             cmd.get_testnet_server_cert_key_setting()
         };
     else return connection_type
         {
-            cmd.get_general_connect_retries_setting(),
-            connect_timeout_milliseconds,
+            cmd.get_general_retries_setting(),
+            period_ms(cmd.get_general_wait_setting()),
             cmd.get_mainnet_cert_file_setting(),
             cmd.get_mainnet_url_setting(),
             cmd.get_mainnet_server_cert_key_setting()
@@ -182,7 +169,7 @@ std::vector<std::string> numbers_to_strings(const index_list& indexes)
 }
 
 // Not testable due to lack of random engine injection.
-// DEPRECATED in favor of libbitcoin::pseudo_random_fill.
+// DEPRECATED in favor of libgroestlcoin::pseudo_random_fill.
 void random_fill(data_chunk& chunk)
 {
     pseudo_random_fill(chunk);
@@ -274,4 +261,4 @@ std::ostream& write_stream(std::ostream& output, const pt::ptree& tree,
 }
 
 } // namespace explorer
-} // namespace libbitcoin
+} // namespace libgroestlcoin

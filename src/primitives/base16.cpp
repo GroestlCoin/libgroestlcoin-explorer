@@ -1,9 +1,9 @@
 /**
- * Copyright (c) 2011-2015 libbitcoin developers (see AUTHORS)
+ * Copyright (c) 2011-2015 libgroestlcoin developers (see AUTHORS)
  *
- * This file is part of libbitcoin-explorer.
+ * This file is part of libgroestlcoin-explorer.
  *
- * libbitcoin-explorer is free software: you can redistribute it and/or
+ * libgroestlcoin-explorer is free software: you can redistribute it and/or
  * modify it under the terms of the GNU Affero General Public License with
  * additional permissions to the one published by the Free Software
  * Foundation, either version 3 of the License, or (at your option)
@@ -17,7 +17,7 @@
  * You should have received a copy of the GNU Affero General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-#include <bitcoin/explorer/primitives/base16.hpp>
+#include <groestlcoin/explorer/primitives/base16.hpp>
 
 #include <array>
 #include <iostream>
@@ -25,12 +25,12 @@
 #include <string>
 #include <cstdint>
 #include <boost/program_options.hpp>
-#include <bitcoin/bitcoin.hpp>
-#include <bitcoin/explorer/define.hpp>
+#include <groestlcoin/groestlcoin.hpp>
+#include <groestlcoin/explorer/define.hpp>
 
 using namespace po;
 
-namespace libbitcoin {
+namespace libgroestlcoin {
 namespace explorer {
 namespace primitives {
 
@@ -85,4 +85,4 @@ std::ostream& operator<<(std::ostream& output, const base16& argument)
 
 } // namespace explorer
 } // namespace primitives
-} // namespace libbitcoin
+} // namespace libgroestlcoin

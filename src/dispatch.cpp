@@ -1,9 +1,9 @@
 /**
- * Copyright (c) 2011-2015 libbitcoin developers (see AUTHORS)
+ * Copyright (c) 2011-2015 libgroestlcoin developers (see AUTHORS)
  *
- * This file is part of libbitcoin-explorer.
+ * This file is part of libgroestlcoin-explorer.
  *
- * libbitcoin-explorer is free software: you can redistribute it and/or
+ * libgroestlcoin-explorer is free software: you can redistribute it and/or
  * modify it under the terms of the GNU Affero General Public License with
  * additional permissions to the one published by the Free Software
  * Foundation, either version 3 of the License, or (at your option)
@@ -17,24 +17,24 @@
  * You should have received a copy of the GNU Affero General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-#include <bitcoin/explorer/dispatch.hpp>
+#include <groestlcoin/explorer/dispatch.hpp>
 
 #include <iostream>
 #include <string>
 #include <boost/filesystem.hpp>
 #include <boost/program_options.hpp>
 #include <boost/throw_exception.hpp>
-#include <bitcoin/explorer/command.hpp>
-#include <bitcoin/explorer/define.hpp>
-#include <bitcoin/explorer/display.hpp>
-#include <bitcoin/explorer/generated.hpp>
-#include <bitcoin/explorer/utility.hpp>
+#include <groestlcoin/explorer/command.hpp>
+#include <groestlcoin/explorer/define.hpp>
+#include <groestlcoin/explorer/display.hpp>
+#include <groestlcoin/explorer/generated.hpp>
+#include <groestlcoin/explorer/utility.hpp>
 
 using namespace boost::filesystem;
 using namespace boost::program_options;
 using namespace boost::system;
 
-namespace libbitcoin {
+namespace libgroestlcoin {
 namespace explorer {
 
 // Not unit testable (reliance on untestable function).
@@ -236,4 +236,4 @@ bool load_variables(variables_map& variables, std::string& message,
 }
 
 } // namespace explorer
-} // namespace libbitcoin
+} // namespace libgroestlcoin

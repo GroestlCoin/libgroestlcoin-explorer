@@ -1,9 +1,9 @@
 /**
- * Copyright (c) 2011-2015 libbitcoin developers (see AUTHORS)
+ * Copyright (c) 2011-2015 libgroestlcoin developers (see AUTHORS)
  *
- * This file is part of libbitcoin-explorer.
+ * This file is part of libgroestlcoin-explorer.
  *
- * libbitcoin-explorer is free software: you can redistribute it and/or
+ * libgroestlcoin-explorer is free software: you can redistribute it and/or
  * modify it under the terms of the GNU Affero General Public License with
  * additional permissions to the one published by the Free Software
  * Foundation, either version 3 of the License, or (at your option)
@@ -18,14 +18,14 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <bitcoin/explorer/obelisk_client.hpp>
+#include <groestlcoin/explorer/obelisk_client.hpp>
 
 #include <boost/filesystem.hpp>
 #include <czmq++/czmqpp.hpp>
-#include <bitcoin/bitcoin.hpp>
-#include <bitcoin/explorer/async_client.hpp>
-#include <bitcoin/explorer/primitives/cert_key.hpp>
-#include <bitcoin/explorer/primitives/uri.hpp>
+#include <groestlcoin/groestlcoin.hpp>
+#include <groestlcoin/explorer/async_client.hpp>
+#include <groestlcoin/explorer/primitives/cert_key.hpp>
+#include <groestlcoin/explorer/primitives/uri.hpp>
 
 using namespace bc;
 using namespace bc::client;
@@ -33,7 +33,7 @@ using namespace bc::explorer::primitives;
 using namespace czmqpp;
 using boost::filesystem::path;
 
-namespace libbitcoin {
+namespace libgroestlcoin {
 namespace explorer {
 
 constexpr int zmq_no_linger = 0;
@@ -181,4 +181,4 @@ void obelisk_client::poll_until_timeout_cumulative(const period_ms& timeout)
 }
 
 } // namespace explorer
-} // namespace libbitcoin
+} // namespace libgroestlcoin

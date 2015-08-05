@@ -1,9 +1,9 @@
 /**
- * Copyright (c) 2011-2015 libbitcoin developers (see AUTHORS)
+ * Copyright (c) 2011-2015 libgroestlcoin developers (see AUTHORS)
  *
- * This file is part of libbitcoin-explorer.
+ * This file is part of libgroestlcoin-explorer.
  *
- * libbitcoin-explorer is free software: you can redistribute it and/or
+ * libgroestlcoin-explorer is free software: you can redistribute it and/or
  * modify it under the terms of the GNU Affero General Public License with
  * additional permissions to the one published by the Free Software
  * Foundation, either version 3 of the License, or (at your option)
@@ -18,22 +18,22 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <bitcoin/explorer/commands/watch-address.hpp>
+#include <groestlcoin/explorer/commands/watch-address.hpp>
 
 #include <csignal>
 #include <iostream>
 #include <czmq++/czmqpp.hpp>
-#include <bitcoin/bitcoin.hpp>
-#include <bitcoin/explorer/callback_state.hpp>
-#include <bitcoin/explorer/define.hpp>
-#include <bitcoin/explorer/display.hpp>
-#include <bitcoin/explorer/obelisk_client.hpp>
-#include <bitcoin/explorer/primitives/address.hpp>
-#include <bitcoin/explorer/primitives/encoding.hpp>
-#include <bitcoin/explorer/primitives/base16.hpp>
-#include <bitcoin/explorer/primitives/transaction.hpp>
-#include <bitcoin/explorer/prop_tree.hpp>
-#include <bitcoin/explorer/utility.hpp>
+#include <groestlcoin/groestlcoin.hpp>
+#include <groestlcoin/explorer/callback_state.hpp>
+#include <groestlcoin/explorer/define.hpp>
+#include <groestlcoin/explorer/display.hpp>
+#include <groestlcoin/explorer/obelisk_client.hpp>
+#include <groestlcoin/explorer/primitives/address.hpp>
+#include <groestlcoin/explorer/primitives/encoding.hpp>
+#include <groestlcoin/explorer/primitives/base16.hpp>
+#include <groestlcoin/explorer/primitives/transaction.hpp>
+#include <groestlcoin/explorer/prop_tree.hpp>
+#include <groestlcoin/explorer/utility.hpp>
 
 using namespace bc;
 using namespace bc::client;
@@ -82,7 +82,7 @@ console_result watch_address::invoke(std::ostream& output, std::ostream& error)
 
     auto on_error = [&state](const std::error_code& error)
     {
-        state.succeeded(error);
+        state.handle_error(error);
     };
 
     client.get_codec()->set_on_update(on_update);

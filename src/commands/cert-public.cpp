@@ -1,9 +1,9 @@
 /**
- * Copyright (c) 2011-2015 libbitcoin developers (see AUTHORS)
+ * Copyright (c) 2011-2015 libgroestlcoin developers (see AUTHORS)
  *
- * This file is part of libbitcoin-explorer.
+ * This file is part of libgroestlcoin-explorer.
  *
- * libbitcoin-explorer is free software: you can redistribute it and/or
+ * libgroestlcoin-explorer is free software: you can redistribute it and/or
  * modify it under the terms of the GNU Affero General Public License with
  * additional permissions to the one published by the Free Software
  * Foundation, either version 3 of the License, or (at your option)
@@ -18,12 +18,12 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <bitcoin/explorer/commands/cert-public.hpp>
+#include <groestlcoin/explorer/commands/cert-public.hpp>
 
 #include <boost/format.hpp>
-#include <bitcoin/explorer/define.hpp>
-#include <bitcoin/explorer/obelisk_client.hpp>
-#include <bitcoin/explorer/utility.hpp>
+#include <groestlcoin/explorer/define.hpp>
+#include <groestlcoin/explorer/obelisk_client.hpp>
+#include <groestlcoin/explorer/utility.hpp>
 #include <czmq++/czmqpp.hpp>
 
 using namespace czmqpp;

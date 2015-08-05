@@ -1,9 +1,9 @@
 /**
- * Copyright (c) 2011-2015 libbitcoin developers (see AUTHORS)
+ * Copyright (c) 2011-2015 libgroestlcoin developers (see AUTHORS)
  *
- * This file is part of libbitcoin-explorer.
+ * This file is part of libgroestlcoin-explorer.
  *
- * libbitcoin-explorer is free software: you can redistribute it and/or
+ * libgroestlcoin-explorer is free software: you can redistribute it and/or
  * modify it under the terms of the GNU Affero General Public License with
  * additional permissions to the one published by the Free Software
  * Foundation, either version 3 of the License, or (at your option)
@@ -18,13 +18,13 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <bitcoin/explorer/commands/stealth-shared.hpp>
+#include <groestlcoin/explorer/commands/stealth-shared.hpp>
 
 #include <iostream>
-#include <bitcoin/bitcoin.hpp>
-#include <bitcoin/explorer/define.hpp>
-#include <bitcoin/explorer/primitives/base16.hpp>
-#include <bitcoin/explorer/primitives/ec_public.hpp>
+#include <groestlcoin/groestlcoin.hpp>
+#include <groestlcoin/explorer/define.hpp>
+#include <groestlcoin/explorer/primitives/base16.hpp>
+#include <groestlcoin/explorer/primitives/ec_public.hpp>
 
 using namespace bc::explorer;
 using namespace bc::explorer::commands;
